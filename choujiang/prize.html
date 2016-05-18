@@ -1,0 +1,128 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>天猪科技有限公司</title>
+	<link rel="stylesheet" href="css/prize.css">
+	<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<script>
+	var alldataarr = new Array();
+	alldataarr[0]=13716363705;alldataarr[1]=1523621544;alldataarr[2]=4125369852;alldataarr[3]=15269842563;alldataarr[4]=18523465;alldataarr[5]=41253698521;alldataarr[6]=4125369850;
+	//var alldataarr = alldata.split(",");
+	var num = alldataarr.length;
+	var timer;
+	var cellnum = 1;
+	function GetRnd(min,max){
+		randnum = parseInt(Math.random()*(max-min));
+		return randnum;
+	}
+	function change(){ 
+		document.getElementById('oknum').value = alldataarr[GetRnd(0,num)]; 
+
+	}
+	function setTimer(){
+		timer = setInterval("change();",10);
+	}
+	function clearTimer(){
+		noDupNum();
+		clearInterval(timer);
+	}
+	function noDupNum(){
+		alldataarr.removeEleAt(randnum); 
+		num = alldataarr.length;
+	}
+	Array.prototype.removeEleAt = function(dx){
+		if(isNaN(dx)||dx>this.length-1 || dx<0){return false;}
+		this.splice(dx,1);
+	}
+
+
+	function setValues(){
+		 var html = '';
+		 html += '<li>';
+		 html += '<span><input type="text" value="'+$("#oknum").val()+'" readonly></span>';
+		 html += '</li>';
+		 $('#yidengjiang').append(html);
+		 if($('.tankuan ul .cur').html() =='一等奖'){
+		 	$('#yidengjiang').append(html);
+		 }else{
+			$('#erdengjiang').append(html);
+		 }
+		//document.getElementById(cellnum).value = document.getElementById("oknum").value ;
+		//cellnum++;
+	}
+	$(function(){
+		//点击抽奖，再次点击暂停
+	  	$(".c_dianji .click").toggle(function(){
+	  		setTimer()
+	  		$('.click img').attr('src','img/zanting.png');
+	  		console.log(num)
+	  	},function(){
+	  		//点击暂停切换按钮
+	  		clearTimer();
+	  		setValues();
+	  		$('.click img').attr('src','img/dianjichoujiang.png');
+	  		if(alldataarr.length === 0 || alldataarr.length == -1){
+		    	alert('全部人员已经抽奖完毕！');
+		    	$(this).unbind("click"); 
+		    	return false;
+		    } 
+	  	})
+	  	//点击选择奖项
+	 //  	$('#box .choose .c_jianx .grey').click(function(){
+		// 	$('.tankuan').toggle();
+		// })
+		// //点击选项更换图片
+		// $(".tankuan ul li").click(function(){
+		// 	$(this).addClass("cur").siblings().removeClass("cur");
+		// 	$('.tankuan').hide();
+		// 	console.log($(this).index())
+		// 	$(".imgs img").removeClass("cur").eq($(this).index()).addClass("cur");
+		// })
+		
+	})
+
+</script>
+<body>
+	<section id="box">
+		<div id="w">
+			<div class="title">抽奖页面</div>
+			<div class="name_list clearfix">
+				<h3 class="prize">获奖人名单</h3>
+				<div class="clearfix">
+					<ul class="list02 clearfix" id="yidengjiang">
+						<h3>一等奖</h3>
+					</ul>
+					<ul class="list02 clearfix" id="erdengjiang">
+						<h3>二等奖</h3>
+					</ul>
+				</div>
+				<div class="all">总共抽奖人数：11111</div>
+			</div>
+			<section class="choose clearfix">
+				<!-- <div class="fl c_jianx clearfix">
+					<a href="javascript:void(0)" class="grey"><img src="img/choujiang.png" alt="" /></a>
+					<a href="javascript:void(0)" class="tuopan">
+						<div class="imgs">
+							<img src="img/timg.jpg" alt="" class="cur">
+							<img src="img/240-1.png" alt="">
+						</div>
+						<i></i>
+					</a>
+					<div class="tankuan">
+						<p></p>
+						<ul>
+							<li class="cur">一等奖</li>
+							<li>二等奖</li>
+						</ul>
+					</div>
+				</div> -->
+				<div class="c_dianji">
+					<input type="text" id="oknum" name="oknum" value="" readonly>
+					<a href="javascript:void(0)"  class="click"><img src="img/dianjichoujiang.png" alt=""></a>
+				</div>
+			</section>
+		</div>
+	</section>
+</body>
+</html>
