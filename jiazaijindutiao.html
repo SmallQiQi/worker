@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>进度条</title>
+	<link rel="stylesheet" href="reset.css">
+	<script src="js.js"></script>
+	<style>
+		#progress{position: fixed;height: 2px;background: #2085c5;transition:opacity 500ms linear;}
+		#progress.done{opacity:0;}
+		#progress span{position: absolute;height: 2px;-webkit-box-shadow:#2085c5 1px 0 6px 1px;
+                -webkit-border-radius:100%;
+                opacity:1;
+                width:150px;
+                right:-10px;
+                -webkit-animation:pulse 2s ease-out 0s infinite;}
+
+		
+
+        @-webkit-keyframes pulse {
+            30% {
+                opacity:.6
+            }
+            60% {
+                opacity:0;
+            }
+            100% {
+                opacity:.6
+            }
+		}
+	</style>
+</head>
+<body>
+	<div id="progress">
+        <span></span>
+	</div>
+</body>
+<script>
+	$(function(){
+		$({property: 0}).animate({property: 100}, {
+		    duration: 1000,
+		    step: function() {
+		        var percentage = Math.round(this.property);
+
+		        $('#progress').css('width',  percentage+"%");
+		        console.log(percentage)
+		         if(percentage == 100) {
+		                $("#progress").addClass("done");//完成，隐藏进度条
+		            }
+		    }
+		});
+	})
+</script>
+</html>
