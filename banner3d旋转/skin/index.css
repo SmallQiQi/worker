@@ -1,0 +1,105 @@
+* {
+  font-family: "Microsoft YaHei";
+  transition: all .3s;
+  -webkit-transition: all .3s;
+  transition-timing-function: linear;
+  -webkit-transition-timing-function: linear;
+}
+.w{width: 1210px;margin:0 auto;}
+body{background: #f5f5f5;}
+/*首页banner*/
+#banner{margin-top: 50px;}
+.bannerList li{position:absolute;top:0;left:0;width:100%;height:420px;fliter:alpha(opacity=0);opacity:0;z-index:0;}
+.bannerList .bannerTab{position:absolute;bottom:18px;left:50%;margin-left:-700px;padding-left:236px;width:964px;height:10px;line-height:0;text-align:center;overflow:hidden;z-index:2;}
+.bannerList .bannerTab span{display:inline-block;width:10px;height:10px;background:#ccc;border-radius:50%;margin:0 5px;cursor:pointer;vertical-align: middle;}
+.bannerList .bannerTab span.on{width:8px;height:8px;border:#ccc solid 1px;background:none;}
+.bannerList .bannerPaN{position:absolute;top:50%;left:50%;margin-top:-30px;display:block;width:35px;height:60px;line-height:60px;background:url(i/bannerPaNBg.png) no-repeat;z-index:2;cursor:default;display:none;cursor:pointer;}
+.bannerList .banner_prev{background-position:0 0;margin-left:-600px;}
+.bannerList .banner_next{background-position:-36px 0;margin-left:565px;}
+.bannerList:hover .bannerPaN{display:block;}
+
+.bannerList{position: relative;height: 430px;top: 0;}
+.bannerList ul{height: 430px;}
+.bannerList li{text-align: center;}
+.bannerList li .banimg{width:1208px;height:430px;margin:0 auto;overflow:hidden;}
+.bannerList li a{width: 100%;height:430px;display: block;overflow:hidden;}
+.bannerList li img{width:100%;height:100%;}
+
+.banner {
+  perspective: 800px;
+}
+
+.bg{
+	position: relative;
+	border-radius: 10px;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-transform: rotateY(0deg) rotateX(0deg);
+	z-index:999999;
+}
+.bg1 {
+  background: url(i/banner1.png) center no-repeat;
+  background-size:100% 100%;
+}
+.bg2 {
+  background: url(i/banner2.png) center no-repeat;
+  background-size:100% 100%;
+}
+.bg3 {
+  background: url(i/banner3.png) center no-repeat;
+  background-size:100% 100%;
+}
+.img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 8px;
+  left: 0;
+  /*background: url("http://static.smartisanos.cn/index/img/store/home/banner-3d-item-1-box-3_8fa7866d59.png") center no-repeat;*/
+  background-size:95% 100%;
+}
+.text{
+  position: absolute;
+  top:20%;
+  right:10%;
+  font-size:30px;
+  color:#fff;
+  text-align:right;
+  font-weight:lighter;
+}
+.copyright{
+  position: absolute;
+  bottom:10%;
+  right:10%;
+  font-size:10px;
+  color:#fff;
+  text-align:right;
+  font-weight:lighter;
+}
+.a {
+  -webkit-transform: translateZ(40px);
+}
+.b {
+  -webkit-transform: translateZ(20px);
+}
+.c {
+  -webkit-transform: translateZ(0px);
+}
+
+
+
+
+
+#list{margin-top: 50px;}
+#list .title{}
+#list ul{overflow: hidden;width: 1230px;}
+#list ul li{float: left;background: #fff;width: 197px;height: 300px;margin-right: 5px;margin-bottom: 5px;text-align: center;border-radius: 5px;border:1px solid #ccc;}
+#list ul li:hover{ box-shadow: 0 0 30px rgba(0,0,0,0.2) inset;}
+#list .item-wrap .p-img{}
+#list .item-wrap .p-img img{max-width: 80%;}
+#list .item-wrap .p-name{display: block;max-width: 11em;margin:0 auto;line-height: 40px;font-size: 16px;white-space: nowrap;text-overflow: ellipsis;}
+#list .item-wrap .p-price{display: inline-block;font-size: 20px;color: #f52e1f;margin: 0 5px 20px 0;}
+#list .item-wrap .p-link{display: inline-block;height: 44px;width: 130px;color: #f52e1f;font-size: 12px;line-height: 44px;border: 1px solid #f52e1f;border-radius: 5px;vertical-align: middle;}
+#list .item-wrap .p-link.line2{line-height: 22px;}
+#list .item-wrap .p-origin{color:#aaa;vertical-align:top;}
+#list .item-wrap .p-origin del{vertical-align:top;}
