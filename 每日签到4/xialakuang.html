@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>每日签到</title>
+    <link rel=stylesheet type=text/css href="css/reset.css">
+    <link rel=stylesheet type=text/css href="css/index.css">
+    <script type=text/javascript src="js/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      //签到手风琴效果
+        $("#firstpane h3.menu_head").click(function(){
+           var isTrue = $(this).hasClass('current')
+          if(isTrue == true){
+            $(this).removeClass('current');
+            $(this).next("div.menu_body").slideToggle(300).slideUp("slow");
+            $(this).addClass('corner_all').removeClass('corner_top');
+            $(this).next("div.menu_body").removeClass('corner_bottom');
+            $(this).next("div.menu_body").removeClass('margin');
+          }else{
+            $(this).addClass("current").next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
+            $(this).siblings().removeClass("current");
+            $(this).siblings("h3.menu_head").removeClass('corner_top').addClass('corner_all');
+            $(this).next("div.menu_body").addClass('margin');
+            $(this).removeClass('corner_all').addClass('corner_top');
+            $(this).next("div.menu_body").addClass('corner_bottom');
+            
+          }
+        });
+        //点击签到
+        $('.btn .btn_save').on('click',function(){
+          var value = $('.apply_main .textarea01').val();
+          if(value == ''){
+            //
+            alert('没填写内容');
+            $(this).parent().parent('.apply_main').prev('.menu_head').children('i').removeClass('iconT').addClass('gantan');
+          }else{
+            $(this).parent().parent('.apply_main').prev('.menu_head').children('i').addClass('iconT').removeClass('gantan');;
+          }
+        })
+    });
+  </script>
+</head>
+<body>
+    <div class="apply_main">
+      <div class="apply_item">
+          <p class="td01"><i class="icon"></i><br>当前位置：</p>
+          <p class="td02"><span class="inpt01 address" type="text" readonly>北京市海淀区西四环三路93 北京市海淀区西四环三路93北京市海淀区西四环三路93<a href="">查看地图</a></span></p>
+      </div>
+    </div>
+    <div class="wrap">
+    </div>
+    <div id="firstpane" class="menu_list">
+      <h3 class="menu_head corner_all">外勤签到 <i class="gantan"></i></h3>
+      <div class="apply_main menu_body" style="display:none">
+        <div class="apply_item">
+            <p class="td01">外勤位置：</p>
+            <p class="td02"><span class="inpt01 address" type="text" readonly>北京市海淀区西四环三路93<a href="">查看地图</a></span></p>
+        </div>
+        <div class="apply_item">
+            <p class="td01">工作内容：</p>
+            <p class="td02"><textarea class="textarea01" name="doyen" id="" rows="9" placeholder="请填写工作内容"></textarea></p>
+        </div>
+        <div class="btn">
+          <input type="button" value="签到" class="btn_save">
+        </div>
+      </div>
+      <h3 class="menu_head corner_all">住宿签到 <i class="gantan"></i></h3>
+      <div class="apply_main menu_body"  style="display:none">
+        <div class="apply_item">
+            <p class="td01">住宿位置：</p>
+            <p class="td02"><span class="inpt01 address" type="text" readonly>北京市海淀区西四环三路93<a href="">查看地图</a></span></p>
+        </div>
+        <div class="apply_item">
+            <p class="td01">工作内容：</p>
+            <p class="td02"><textarea class="textarea01" name="doyen" id="" rows="9" placeholder="请填写工作内容"></textarea></p>
+        </div>
+        <div class="btn">
+          <input type="button" value="签到" class="btn_save">
+        </div>
+      </div>
+      <h3 class="menu_head corner_all">今日休息 <i class="gantan"></i></h3>
+      <div class="apply_main menu_body"  style="display:none">
+        <div class="apply_item">
+            <p class="td01">位置：</p>
+            <p class="td02"><span class="inpt01 address" type="text" readonly>北京市海淀区西四环三路93<a href="">查看地图</a></span></p>
+        </div>
+        <div class="btn">
+          <input type="button" value="签到" class="btn_save">
+        </div>
+      </div>
+    </div>
+</body>
+</html>
